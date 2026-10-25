@@ -1,0 +1,5 @@
+REALTIME_SFU_APP_ID="replace-with-development-app-id"
+REALTIME_SFU_BEARER_TOKEN="replace-with-app-secret"
+# Optional: restrictive networks. Generate a TURN key in Cloudflare Realtime.
+TURN_KEY_ID=""
+TURN_API_TOKEN=""
