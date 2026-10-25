@@ -10,6 +10,19 @@
 
 公网地址：<https://piik.chius.dev>，备用地址：<https://piik-worker.chius.workers.dev>。已配置 SFU 与 TURN 短期凭据。
 
+## 自动部署
+
+推送到 `main` 后，GitHub Actions 自动安装 lockfile 中的依赖、检查类型、运行测试、构建及部署预演；全部通过后，用项目固定版本的 `cf` 发布到 Cloudflare，并验证 <https://piik.chius.dev>。Pull Request 只检查，不部署；也可在 Actions 页面手动运行 `main` 的工作流。
+
+仓库的 Actions Secrets 需要：
+
+- `CLOUDFLARE_API_TOKEN`：部署专用 API token，授权当前账号的 Workers Scripts 编辑和 Account Settings 读取，以及 `chius.dev` 的 Zone 读取和 Workers Routes 编辑。
+- `CLOUDFLARE_ACCOUNT_ID`：部署所属的 Cloudflare 账号 ID。
+
+SFU 和 TURN 密钥保留在现有 Worker 的加密绑定中，自动部署继承这些绑定，不把 `.dev.vars` 上传到 GitHub。首次部署到其他账号时，需要先用 `cf deploy --secrets-file` 配置媒体密钥。
+
+工作流位于 [deploy.yml](.github/workflows/deploy.yml)。部署按顺序执行，避免两个版本同时发布；Actions 页面会保留检查结果和部署链接。
+
 ## 本地运行
 
 需要 Node.js 22.18+。Node 沿用现有 nvm 环境，依赖安装在项目内。
@@ -104,14 +117,14 @@ ICE 收集最长等待 10 秒；若已有候选地址，即使用当前 `localDe
 | `src/shared/protocol.ts` | 请求/响应验证与前后端协议                            |
 | `src/client/main.ts`     | 房间页面、采集、播放、通知和媒体恢复                 |
 | `src/client/media.ts`    | 浏览器 ICE 收集与连接等待                            |
-| `src/client/i18n.ts`     | 中英文文案、偏好和错误提示映射                        |
-| `public/logo.svg`        | 网站 Logo 与标签页图标                              |
+| `src/client/i18n.ts`     | 中英文文案、偏好和错误提示映射                       |
+| `public/logo.svg`        | 网站 Logo 与标签页图标                               |
 | `tests/runtime`          | Workers runtime 的权限和生命周期回归测试             |
 
 控制消息通过 Workers/DO，音视频直接在浏览器与 SFU 之间传输。当前不需要 D1、R2 或 KV。
 初始产品分析、服务选型与成本模型见 [架构研究](docs/research.zh-CN.md)。
 
 `npm run build` 仅构建；`npm run deploy` 使用 cf 发布到你选择的 Cloudflare 账号。
-已于 2026-10-25 发布至 Cloudflare，当前版本 `5a861501-d4d7-4adf-a16c-72f9f0e3a7a8`。
+已于 2026-10-25 发布至 Cloudflare；后续版本由 GitHub Actions 自动发布，[查看部署记录](https://github.com/chius-me/piik-worker/actions/workflows/deploy.yml)。
 发布使用 `cf deploy --prebuilt --secrets-file .dev.vars`；密钥仅进入 Worker 服务端绑定。
 `cloudflare.config.ts` 通过 `domains` 维护 `piik.chius.dev` 自定义域名，并保留 workers.dev 备用地址；Cloudflare 自动管理 DNS 和 TLS。
