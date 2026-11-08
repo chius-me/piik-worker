@@ -28,7 +28,7 @@
     "@msw/cloudflare": "^0.0.1",
     "@types/node": "^26.0.0",
     "cf": "1.0.0-beta.21",
-    "msw": "^2.15.0",
+    "msw": "^3.0.3",
     "typescript": "^7.0.2",
     "vite": "8.3.5",
     "vitest": "5.0.5"
