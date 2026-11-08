@@ -55,6 +55,7 @@ jobs:
       - run: npm ci
       - run: npm run check
       - name: Deploy to Cloudflare
-        run: npx cf deploy --prebuilt --mode production --message "GitHub Actions: ${GITHUB_SHA}"
+        run: |
+          npx cf deploy --prebuilt --mode production --message "GitHub Actions: ${GITHUB_SHA}"
       - name: Verify public deployment
         run: node scripts/check-deployment.mjs
