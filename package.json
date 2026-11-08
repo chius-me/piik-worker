@@ -16,7 +16,7 @@
     "check": "npm run typecheck && npm test && npm run build"
   },
   "dependencies": {
-    "zod": "4.6.6"
+    "zod": "4.6.7"
   },
   "overrides": {
     "zod": "$zod",
@@ -24,14 +24,14 @@
   },
   "devDependencies": {
     "@cloudflare/vite-plugin": "beta",
-    "@cloudflare/vitest-plugin": "1.4.7",
-    "@msw/cloudflare": "^0.0.1",
-    "@types/node": "^26.0.0",
+    "@cloudflare/vitest-plugin": "1.5.1",
+    "@msw/cloudflare": "^0.2.0",
+    "@types/node": "^26.6.6",
     "cf": "1.0.0-beta.21",
     "msw": "^2.15.0",
     "typescript": "^7.0.2",
-    "vite": "8.3.5",
-    "vitest": "5.0.5"
+    "vite": "8.3.6",
+    "vitest": "5.1.0"
   },
   "license": "MIT"
 }
