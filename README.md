@@ -1,6 +1,23 @@
-# Piik (piik-worker)
+<div align="center">
 
-基于 Cloudflare Workers、SQLite Durable Objects 和 Realtime SFU 的私密屏幕共享。
+<img src="./public/logo.svg" width="60" height="60" alt="Piik Logo" />
+
+# Piik
+
+基于 Cloudflare Workers、SQLite Durable Objects 和 Realtime SFU 的私密屏幕与音频共享。
+
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Release](https://img.shields.io/github/v/release/chius-me/piik-worker?color=2ea44f)](https://github.com/chius-me/piik-worker/releases/latest)
+[![CI](https://github.com/chius-me/piik-worker/actions/workflows/deploy.yml/badge.svg)](https://github.com/chius-me/piik-worker/actions)
+![Cloudflare Workers](https://img.shields.io/badge/Cloudflare-Workers-f38020?logo=cloudflare&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178c6?logo=typescript&logoColor=white)
+
+[在线体验](https://piik.chius.dev) · [备用地址](https://piik-worker.chius.workers.dev) · [架构设计](./docs/research.zh-CN.md)
+
+</div>
+
+---
+
 一位房主，最多 20 位观众；通过邀请链接，在浏览器里一起看画面、听来源声音。
 
 网站采用绿色 `p.` Logo，品牌名为 **Piik**。支持中文和英文切换；优先使用已保存的语言，否则参考浏览器语言。切换语言不会重建音视频连接。
@@ -128,3 +145,13 @@ ICE 收集最长等待 10 秒；若已有候选地址，即使用当前 `localDe
 已于 2026-10-25 发布至 Cloudflare；后续版本由 GitHub Actions 自动发布，[查看部署记录](https://github.com/chius-me/piik-worker/actions/workflows/deploy.yml)。
 发布使用 `cf deploy --prebuilt --secrets-file .dev.vars`；密钥仅进入 Worker 服务端绑定。
 `cloudflare.config.ts` 通过 `domains` 维护 `piik.chius.dev` 自定义域名，并保留 workers.dev 备用地址；Cloudflare 自动管理 DNS 和 TLS。
+
+---
+
+## 📄 License
+
+Distributed under the [MIT](LICENSE) License.
+
+<div align="center">
+  <sub>Crafted with ❤️ by <a href="https://chius.cc">Chius</a> · Powered by Cloudflare & GitHub</sub>
+</div>
