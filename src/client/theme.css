@@ -1,11 +1,11 @@
 :root {
   color-scheme: light;
-  --paper: #f6f4ec;
-  --card: #fdfcf7;
-  --ink: #293d30;
-  --forest: #365640;
-  --muted: #65705f;
-  --line: #dedfd3;
-  --orange: #b56a41;
-  --focus: #bc9762;
+  --paper: #fdfcfb;
+  --card: #f2f1ee;
+  --ink: #292c30;
+  --forest: #256786;
+  --muted: #6b7076;
+  --line: #e5e4e1;
+  --orange: #b24c37;
+  --focus: #256786;
 }

@@ -1,16 +1,41 @@
 @import url("./theme.css");
 
+@font-face {
+  font-family: "Google Sans Code";
+  font-style: normal;
+  font-weight: 300 800;
+  font-display: swap;
+  src: url("/fonts/google-sans-code.woff2") format("woff2");
+}
+
 * {
   box-sizing: border-box;
 }
 body {
+  position: relative;
+  isolation: isolate;
   margin: 0;
   color: var(--ink);
   background: var(--paper);
   font-family:
-    -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
-    "Microsoft YaHei", sans-serif;
+    "Google Sans Code", "Sarasa Mono SC", ui-monospace, "SF Mono", Menlo, Consolas,
+    "PingFang SC", "Microsoft YaHei", monospace;
   -webkit-font-smoothing: antialiased;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-image: url("/images/paper-grain.svg");
+  opacity: 0.045;
+  pointer-events: none;
+}
+
+::selection {
+  background: var(--forest);
+  color: #ffffff;
 }
 button,
 input {
@@ -228,7 +253,7 @@ main {
   color: #fff;
 }
 .primary:hover {
-  background: #244335;
+  background: #124c68;
 }
 .secondary {
   background: var(--card);
@@ -236,7 +261,7 @@ main {
   color: var(--ink);
 }
 .secondary:hover {
-  background: #e9ece4;
+  background: #e5e4e1;
 }
 .ghost {
   background: transparent;
