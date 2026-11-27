@@ -7,8 +7,8 @@
 基于 Cloudflare Workers、SQLite Durable Objects 和 Realtime SFU 的私密屏幕与音频共享。
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Release](https://img.shields.io/github/v/release/chius-me/piik-worker?color=2ea44f)](https://github.com/chius-me/piik-worker/releases/latest)
-[![CI](https://github.com/chius-me/piik-worker/actions/workflows/deploy.yml/badge.svg)](https://github.com/chius-me/piik-worker/actions)
+[![Release](https://img.shields.io/github/v/release/chius-n/piik-worker?color=2ea44f)](https://github.com/chius-n/piik-worker/releases/latest)
+[![CI](https://github.com/chius-n/piik-worker/actions/workflows/deploy.yml/badge.svg)](https://github.com/chius-n/piik-worker/actions)
 ![Cloudflare Workers](https://img.shields.io/badge/Cloudflare-Workers-f38020?logo=cloudflare&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178c6?logo=typescript&logoColor=white)
 
@@ -142,7 +142,7 @@ ICE 收集最长等待 10 秒；若已有候选地址，即使用当前 `localDe
 初始产品分析、服务选型与成本模型见 [架构研究](docs/research.zh-CN.md)。
 
 `npm run build` 仅构建；`npm run deploy` 使用 cf 发布到你选择的 Cloudflare 账号。
-已于 2026-10-25 发布至 Cloudflare；后续版本由 GitHub Actions 自动发布，[查看部署记录](https://github.com/chius-me/piik-worker/actions/workflows/deploy.yml)。
+已于 2026-10-25 发布至 Cloudflare；后续版本由 GitHub Actions 自动发布，[查看部署记录](https://github.com/chius-n/piik-worker/actions/workflows/deploy.yml)。
 发布使用 `cf deploy --prebuilt --secrets-file .dev.vars`；密钥仅进入 Worker 服务端绑定。
 `cloudflare.config.ts` 通过 `domains` 维护 `piik.chius.dev` 自定义域名，并保留 workers.dev 备用地址；Cloudflare 自动管理 DNS 和 TLS。
 
